@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "betterhurtcam",
+  "version": "${version}",
+  "name": "BetterHurtCam",
+  "description": "nohurtcam but better",
+  "authors": [
+    "uku"
+  ],
+  "contact": {
+    "website": "https://github.com/uku3lig/betterhurtcam",
+    "repo": "https://github.com/uku3lig/betterhurtcam.git"
+  },
+  "license": "MIT",
+  "icon": "assets/betterhurtcam/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "net.uku3lig.betterhurtcam.BetterHurtCam"
+    ],
+    "modmenu": [
+      "net.uku3lig.betterhurtcam.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "betterhurtcam.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14",
+    "fabric": "*",
+    "minecraft": "1.18.2",
+    "cloth-config": ">=6.2"
+  }
+}
