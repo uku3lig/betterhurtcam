@@ -5,5 +5,5 @@
 **BetterHurtCam** is a revamped version of [NoHurtCam](https://github.com/UltraBlackLinux/noHurtCam), which allows not only to disable the hurt camera bobbing, but to change its intensity!
 
 ### Dependencies
-* [Cloth Config](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
+* [Fabric API](https://modrinth.com/mod/fabric-api) (or [Quilted Fabric API](https://modrinth.com/mod/qsl) if you use Quilt)
 * [Mod Menu *(optional)*](https://modrinth.com/mod/modmenu)
