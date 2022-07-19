@@ -10,6 +10,7 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 @Getter
 @Setter
 public class ModConfig implements ConfigData {
-    @ConfigEntry.BoundedDiscrete(min = 0, max = 2)
-    private float multiplier = 1;
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
+    @ConfigEntry.Gui.Tooltip
+    private int strength = 10;
 }

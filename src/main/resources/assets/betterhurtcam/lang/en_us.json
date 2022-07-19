@@ -1,4 +1,5 @@
 {
   "text.autoconfig.betterhurtcam.title": "BetterHurtCam Configuration",
-  "text.autoconfig.betterhurtcam.option.multiplier": "Hurtcam Multiplier (set to 0 to disable)"
+  "text.autoconfig.betterhurtcam.option.strength": "Hurtcam Strength",
+  "text.autoconfig.betterhurtcam.option.strength.@Tooltip": "0 to disable, 10 for vanilla"
 }
