@@ -28,6 +28,7 @@
   "depends": {
     "fabricloader": ">=0.13",
     "minecraft": "1.19.x",
-    "cloth-config": ">=7.0"
+    "cloth-config": ">=7.0",
+    "fabric-key-binding-api-v1": "*"
   }
 }
