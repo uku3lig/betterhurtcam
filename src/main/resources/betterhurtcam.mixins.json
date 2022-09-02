@@ -4,9 +4,8 @@
   "package": "net.uku3lig.betterhurtcam.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MixinGameRenderer"
-  ],
-  "client": [
+    "MixinGameRenderer",
+    "MixinMinecraftClient"
   ],
   "injectors": {
     "defaultRequire": 1
