@@ -9,9 +9,6 @@ group = project.maven_group
 
 repositories {
     maven {
-        url "https://maven.shedaniel.me"
-    }
-    maven {
         url "https://maven.terraformersmc.com/releases"
     }
 }
@@ -25,9 +22,7 @@ dependencies {
     include modApi(fabricApi.module("fabric-key-binding-api-v1", project.fabric_version))
 
     modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-    include modApi("me.shedaniel.cloth:cloth-config-fabric:${project.clothconfig_version}") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
+    include implementation("com.moandjiezana.toml:toml4j:${project.toml4j_version}")
 }
 
 processResources {

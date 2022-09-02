@@ -1,17 +1,17 @@
 package net.uku3lig.betterhurtcam.mixin;
 
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.ConfigHolder;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Text;
 import net.uku3lig.betterhurtcam.BetterHurtCam;
-import net.uku3lig.betterhurtcam.ModConfig;
+import net.uku3lig.betterhurtcam.config.Config;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.io.IOException;
 
 @Mixin(MinecraftClient.class)
 public class MixinMinecraftClient {
@@ -19,27 +19,35 @@ public class MixinMinecraftClient {
 
     @Inject(at = @At("RETURN"), method = "tick")
     private void onEndTick(CallbackInfo info) {
-        ConfigHolder<ModConfig> holder = AutoConfig.getConfigHolder(ModConfig.class);
+        Config config = BetterHurtCam.getConfig();
 
         while(BetterHurtCam.getToggle().wasPressed()) {
-            holder.getConfig().setEnabled(!holder.getConfig().isEnabled());
-            holder.save();
+            config.setEnabled(!config.isEnabled());
+            save(config);
 
-            player.sendMessage(Text.of("§fHurtcam " + (holder.getConfig().isEnabled() ? "§a§lON" : "§c§lOFF")), true);
+            player.sendMessage(Text.of("§fHurtcam " + (config.isEnabled() ? "§a§lON" : "§c§lOFF")), true);
         }
 
         while (BetterHurtCam.getPlus().wasPressed()) {
-            holder.getConfig().setStrength(Math.min(20, holder.getConfig().getStrength() + 1));
-            holder.save();
+            config.setMultiplier(Math.min(2, config.getMultiplier() + 0.1));
+            save(config);
 
-            player.sendMessage(Text.of("§fHurtcam strength increased to §3§l" + holder.getConfig().getStrength()), true);
+            player.sendMessage(Text.of("§fHurtcam multiplier increased to §3§l%.1f".formatted(config.getMultiplier())), true);
         }
 
         while (BetterHurtCam.getMinus().wasPressed()) {
-            holder.getConfig().setStrength(Math.max(0, holder.getConfig().getStrength() - 1));
-            holder.save();
+            config.setMultiplier(Math.max(0, config.getMultiplier() - 0.1));
+            save(config);
 
-            player.sendMessage(Text.of("§fHurtcam strength decreased to §3§l" + holder.getConfig().getStrength()), true);
+            player.sendMessage(Text.of("§fHurtcam multiplier decreased to §3§l%.1f".formatted(config.getMultiplier())), true);
+        }
+    }
+
+    private void save(Config cfg) {
+        try {
+            cfg.writeConfig(BetterHurtCam.getFile());
+        } catch (IOException ignored) {
+            // ignored
         }
     }
 }
