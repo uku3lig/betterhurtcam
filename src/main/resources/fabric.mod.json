@@ -19,7 +19,7 @@
       "net.uku3lig.betterhurtcam.BetterHurtCam"
     ],
     "modmenu": [
-      "net.uku3lig.betterhurtcam.ModMenuIntegration"
+      "net.uku3lig.betterhurtcam.config.ModMenuIntegration"
     ]
   },
   "mixins": [
@@ -27,8 +27,6 @@
   ],
   "depends": {
     "fabricloader": ">=0.13",
-    "minecraft": "1.17.x",
-    "cloth-config": ">=5.0",
     "fabric-key-binding-api-v1": "*"
   }
 }
