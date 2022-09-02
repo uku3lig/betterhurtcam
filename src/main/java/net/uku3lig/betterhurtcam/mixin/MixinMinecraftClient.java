@@ -29,7 +29,8 @@ public class MixinMinecraftClient {
         }
 
         while (BetterHurtCam.getPlus().wasPressed()) {
-            config.setMultiplier(Math.min(2, config.getMultiplier() + 0.1));
+            int max = config.isIncreased() ? 10 : 2;
+            config.setMultiplier(Math.min(max, config.getMultiplier() + 0.1));
             save(config);
 
             player.sendMessage(Text.of("§fHurtcam multiplier increased to §3§l%.1f".formatted(config.getMultiplier())), true);

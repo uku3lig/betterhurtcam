@@ -17,9 +17,10 @@ import java.io.IOException;
 public class Config {
     private boolean enabled;
     private double multiplier;
+    private boolean increased;
 
     public Config() {
-        this(true, 0.3);
+        this(true, 0.3, false);
     }
 
     public static Config readConfig(File file) {
