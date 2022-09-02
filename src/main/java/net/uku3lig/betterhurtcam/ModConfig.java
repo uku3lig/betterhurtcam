@@ -10,10 +10,9 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 @Getter
 @Setter
 public class ModConfig implements ConfigData {
+    private boolean enabled = true;
+
     @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
     @ConfigEntry.Gui.Tooltip
     private int strength = 10;
-
-    @ConfigEntry.Gui.Excluded
-    private int oldValue = strength;
 }

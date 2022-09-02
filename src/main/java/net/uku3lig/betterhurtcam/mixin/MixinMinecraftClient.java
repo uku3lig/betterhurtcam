@@ -22,15 +22,10 @@ public class MixinMinecraftClient {
         ConfigHolder<ModConfig> holder = AutoConfig.getConfigHolder(ModConfig.class);
 
         while(BetterHurtCam.getToggle().wasPressed()) {
-            if (holder.getConfig().getStrength() == 0) {
-                holder.getConfig().setStrength(holder.getConfig().getOldValue());
-            } else {
-                holder.getConfig().setOldValue(holder.getConfig().getStrength());
-                holder.getConfig().setStrength(0);
-            }
+            holder.getConfig().setEnabled(!holder.getConfig().isEnabled());
             holder.save();
 
-            player.sendMessage(Text.of("§fHurtcam " + (holder.getConfig().getStrength() == 0 ? "§c§lOFF" : "§a§lON")), true);
+            player.sendMessage(Text.of("§fHurtcam " + (holder.getConfig().isEnabled() ? "§a§lON" : "§c§lOFF")), true);
         }
 
         while (BetterHurtCam.getPlus().wasPressed()) {
