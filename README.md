@@ -1,4 +1,5 @@
-![sexo](https://raw.githubusercontent.com/uku3lig/betterhurtcam/master/banner.png)
+![Banner](https://raw.githubusercontent.com/uku3lig/betterhurtcam/master/banner.png) \
+[![Modrinth page](https://img.shields.io/modrinth/dt/o4y0N2hu?style=for-the-badge)](https://modrinth.com/mod/betterhurtcam)
 
 *graphic design is my passion*
 
