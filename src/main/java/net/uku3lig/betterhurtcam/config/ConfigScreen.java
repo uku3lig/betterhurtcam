@@ -4,10 +4,12 @@ import com.mojang.serialization.Codec;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.option.SimpleOption;
 import net.minecraft.text.Text;
+import net.uku3lig.betterhurtcam.BetterHurtCam;
+import net.uku3lig.ukulib.config.AbstractConfigScreen;
 
-public class ConfigScreen extends AbstractConfigScreen {
+public class ConfigScreen extends AbstractConfigScreen<Config> {
     protected ConfigScreen(Screen parent, Config config) {
-        super(parent, Text.literal("BetterHurtCam Config"), config);
+        super(parent, Text.literal("BetterHurtCam Config"), config, BetterHurtCam.getFile());
     }
 
     @Override
