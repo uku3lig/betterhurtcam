@@ -7,8 +7,8 @@ import net.minecraft.text.Text;
 import net.uku3lig.betterhurtcam.BetterHurtCam;
 import net.uku3lig.ukulib.config.AbstractConfigScreen;
 
-public class ConfigScreen extends AbstractConfigScreen<Config> {
-    protected ConfigScreen(Screen parent, Config config) {
+public class BHCConfigScreen extends AbstractConfigScreen<BHCConfig> {
+    protected BHCConfigScreen(Screen parent, BHCConfig config) {
         super(parent, Text.literal("BetterHurtCam Config"), config, BetterHurtCam.getFile());
     }
 
