@@ -21,16 +21,8 @@ public class MixinMinecraftClient {
     private void onEndTick(CallbackInfo info) {
         BHCConfig config = BetterHurtCam.getConfig();
 
-        while(BetterHurtCam.getToggle().wasPressed()) {
-            config.setEnabled(!config.isEnabled());
-            save(config);
-
-            player.sendMessage(Text.of("§fHurtcam " + (config.isEnabled() ? "§a§lON" : "§c§lOFF")), true);
-        }
-
         while (BetterHurtCam.getPlus().wasPressed()) {
-            int max = config.isIncreased() ? 10 : 2;
-            config.setMultiplier(Math.min(max, config.getMultiplier() + 0.1));
+            config.setMultiplier(Math.min(2, config.getMultiplier() + 0.1));
             save(config);
 
             player.sendMessage(Text.of("§fHurtcam multiplier increased to §3§l%.1f".formatted(config.getMultiplier())), true);

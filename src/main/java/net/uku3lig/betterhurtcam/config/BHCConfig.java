@@ -13,12 +13,10 @@ import net.uku3lig.ukulib.config.AbstractConfig;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BHCConfig extends AbstractConfig {
-    private boolean enabled;
     private double multiplier;
-    private boolean increased;
 
     @Override
     protected AbstractConfig defaultConfig() {
-        return new BHCConfig(true, 0.3, false);
+        return new BHCConfig(0.3);
     }
 }
