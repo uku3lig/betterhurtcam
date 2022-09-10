@@ -1,5 +1,6 @@
 package net.uku3lig.betterhurtcam.config;
 
+import lombok.extern.slf4j.Slf4j;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -7,21 +8,29 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
+import net.uku3lig.ukulib.config.AbstractConfig;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.function.DoubleConsumer;
 
+@Slf4j
 public class TextInputScreen extends Screen {
     private final Screen parent;
     private final DoubleConsumer callback;
     private final double last;
+    private final AbstractConfig config;
+    private final File configFile;
 
     private TextFieldWidget textField;
 
-    public TextInputScreen(Screen parent, DoubleConsumer callback, double last) {
+    public TextInputScreen(Screen parent, DoubleConsumer callback, double last, AbstractConfig config, File configFile) {
         super(Text.literal("Text input screen"));
         this.parent = parent;
         this.callback = callback;
         this.last = last;
+        this.config = config;
+        this.configFile = configFile;
     }
 
     @Override
@@ -45,6 +54,11 @@ public class TextInputScreen extends Screen {
     public void removed() {
         if (isValid(textField.getText())) {
             callback.accept(Double.parseDouble(textField.getText()));
+            try {
+                config.writeConfig(configFile);
+            } catch (IOException e) {
+                log.warn("Could not save config", e);
+            }
         }
     }
 
