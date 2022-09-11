@@ -14,8 +14,6 @@ public class BetterHurtCam implements ModInitializer {
     public static final String MOD = "BetterHurtCam";
 
     @Getter
-    private static final KeyBinding toggle = new KeyBinding("key.betterhurtcam.toggle",InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F8, MOD);
-    @Getter
     private static final KeyBinding plus = new KeyBinding("key.betterhurtcam.plus", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, MOD);
     @Getter
     private static final KeyBinding minus = new KeyBinding("key.betterhurtcam.minus", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, MOD);
@@ -28,7 +26,6 @@ public class BetterHurtCam implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        KeyBindingHelper.registerKeyBinding(toggle);
         KeyBindingHelper.registerKeyBinding(plus);
         KeyBindingHelper.registerKeyBinding(minus);
     }
