@@ -7,7 +7,6 @@ import net.uku3lig.betterhurtcam.BetterHurtCam;
 public class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        BHCConfig config = BetterHurtCam.getConfig();
-        return parent -> new TextInputScreen(parent, config::setMultiplier, config.getMultiplier(), config);
+        return parent -> new MultiplierInputScreen(parent, BetterHurtCam.getConfig());
     }
 }
