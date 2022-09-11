@@ -8,6 +8,6 @@ public class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
         BHCConfig config = BetterHurtCam.getConfig();
-        return parent -> new TextInputScreen(parent, config::setMultiplier, config.getMultiplier(), config, BetterHurtCam.getFile());
+        return parent -> new TextInputScreen(parent, config::setMultiplier, config.getMultiplier(), config);
     }
 }
