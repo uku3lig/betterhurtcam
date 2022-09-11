@@ -1,5 +1,6 @@
 package net.uku3lig.betterhurtcam.mixin;
 
+import lombok.extern.slf4j.Slf4j;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Text;
@@ -14,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.io.IOException;
 
 @Mixin(MinecraftClient.class)
+@Slf4j
 public class MixinMinecraftClient {
     @Shadow public ClientPlayerEntity player;
 
@@ -39,8 +41,8 @@ public class MixinMinecraftClient {
     private void save(BHCConfig cfg) {
         try {
             cfg.writeConfig();
-        } catch (IOException ignored) {
-            // ignored
+        } catch (IOException e) {
+            log.warn("Could not save config", e);
         }
     }
 }
