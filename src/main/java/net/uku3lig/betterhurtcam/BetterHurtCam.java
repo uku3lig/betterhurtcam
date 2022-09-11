@@ -23,7 +23,7 @@ public class BetterHurtCam implements ModInitializer {
     @Getter
     private static final File file = new File("./config/betterhurtcam.toml");
     @Getter
-    private static final BHCConfig config = (BHCConfig) new BHCConfig().readConfig(file);
+    private static final BHCConfig config = (BHCConfig) new BHCConfig(file).readConfig();
 
 
     @Override

@@ -1,22 +1,29 @@
 package net.uku3lig.betterhurtcam.config;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import net.uku3lig.ukulib.config.AbstractConfig;
 
+import java.io.File;
+
 @Slf4j
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class BHCConfig extends AbstractConfig {
     private double multiplier;
 
+    public BHCConfig(File file, double multiplier) {
+        super(file);
+        this.multiplier = multiplier;
+    }
+
+    public BHCConfig(File file) {
+        super(file);
+    }
+
     @Override
     protected AbstractConfig defaultConfig() {
-        return new BHCConfig(0.3);
+        return new BHCConfig(file, 0.3);
     }
 }

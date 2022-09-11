@@ -10,7 +10,6 @@ import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 import net.uku3lig.ukulib.config.AbstractConfig;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.function.DoubleConsumer;
 
@@ -20,17 +19,15 @@ public class TextInputScreen extends Screen {
     private final DoubleConsumer callback;
     private final double last;
     private final AbstractConfig config;
-    private final File configFile;
 
     private TextFieldWidget textField;
 
-    public TextInputScreen(Screen parent, DoubleConsumer callback, double last, AbstractConfig config, File configFile) {
+    public TextInputScreen(Screen parent, DoubleConsumer callback, double last, AbstractConfig config) {
         super(Text.literal("Text input screen"));
         this.parent = parent;
         this.callback = callback;
         this.last = last;
         this.config = config;
-        this.configFile = configFile;
     }
 
     @Override
@@ -55,7 +52,7 @@ public class TextInputScreen extends Screen {
         if (isValid(textField.getText())) {
             callback.accept(Double.parseDouble(textField.getText()));
             try {
-                config.writeConfig(configFile);
+                config.writeConfig();
             } catch (IOException e) {
                 log.warn("Could not save config", e);
             }

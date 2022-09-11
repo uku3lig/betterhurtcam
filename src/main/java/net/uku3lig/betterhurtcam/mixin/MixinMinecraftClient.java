@@ -38,7 +38,7 @@ public class MixinMinecraftClient {
 
     private void save(BHCConfig cfg) {
         try {
-            cfg.writeConfig(BetterHurtCam.getFile());
+            cfg.writeConfig();
         } catch (IOException ignored) {
             // ignored
         }
