@@ -14,9 +14,9 @@ public class BetterHurtCam implements ModInitializer {
     public static final String MOD = "BetterHurtCam";
 
     @Getter
-    private static final KeyBinding plus = new KeyBinding("key.betterhurtcam.plus", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, MOD);
+    private static final KeyBinding plus = new KeyBinding("key.betterhurtcam.plus", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F7, MOD);
     @Getter
-    private static final KeyBinding minus = new KeyBinding("key.betterhurtcam.minus", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, MOD);
+    private static final KeyBinding minus = new KeyBinding("key.betterhurtcam.minus", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F6, MOD);
 
     @Getter
     private static final File file = new File("./config/betterhurtcam.toml");
