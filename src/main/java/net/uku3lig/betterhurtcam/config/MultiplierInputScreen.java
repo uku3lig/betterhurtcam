@@ -7,7 +7,7 @@ import net.uku3lig.ukulib.config.TextInputScreen;
 import java.util.Optional;
 
 public class MultiplierInputScreen extends TextInputScreen<Double> {
-    protected MultiplierInputScreen(Screen parent, BHCConfig config) {
+    public MultiplierInputScreen(Screen parent, BHCConfig config) {
         super(parent, Text.of("BetterHurtCam Config"), Text.translatable("betterhurtcam.option.strength"), config::setMultiplier, config.getMultiplier(), config);
     }
 
