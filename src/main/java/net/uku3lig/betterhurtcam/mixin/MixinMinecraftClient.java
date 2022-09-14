@@ -6,13 +6,12 @@ import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Text;
 import net.uku3lig.betterhurtcam.BetterHurtCam;
 import net.uku3lig.betterhurtcam.config.BHCConfig;
+import net.uku3lig.ukulib.config.ConfigManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.io.IOException;
 
 @Mixin(MinecraftClient.class)
 @Slf4j
@@ -21,28 +20,20 @@ public class MixinMinecraftClient {
 
     @Inject(at = @At("RETURN"), method = "tick")
     private void onEndTick(CallbackInfo info) {
-        BHCConfig config = BetterHurtCam.getConfig();
+        ConfigManager<BHCConfig> manager = BetterHurtCam.getManager();
 
         while (BetterHurtCam.getPlus().wasPressed()) {
-            config.setMultiplier(Math.min(2, config.getMultiplier() + 0.1));
-            save(config);
+            manager.getConfig().setMultiplier(Math.min(2, manager.getConfig().getMultiplier() + 0.1));
+            manager.saveConfig();
 
-            player.sendMessage(Text.of("§fHurtcam multiplier increased to §3§l%.1f".formatted(config.getMultiplier())), true);
+            player.sendMessage(Text.of("§fHurtcam multiplier increased to §3§l%.1f".formatted(manager.getConfig().getMultiplier())), true);
         }
 
         while (BetterHurtCam.getMinus().wasPressed()) {
-            config.setMultiplier(Math.max(0, config.getMultiplier() - 0.1));
-            save(config);
+            manager.getConfig().setMultiplier(Math.max(0, manager.getConfig().getMultiplier() - 0.1));
+            manager.saveConfig();
 
-            player.sendMessage(Text.of("§fHurtcam multiplier decreased to §3§l%.1f".formatted(config.getMultiplier())), true);
-        }
-    }
-
-    private void save(BHCConfig cfg) {
-        try {
-            cfg.writeConfig();
-        } catch (IOException e) {
-            log.warn("Could not save config", e);
+            player.sendMessage(Text.of("§fHurtcam multiplier decreased to §3§l%.1f".formatted(manager.getConfig().getMultiplier())), true);
         }
     }
 }

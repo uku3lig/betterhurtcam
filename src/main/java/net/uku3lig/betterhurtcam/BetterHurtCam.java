@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.uku3lig.betterhurtcam.config.BHCConfig;
+import net.uku3lig.ukulib.config.ConfigManager;
 import org.lwjgl.glfw.GLFW;
 
 import java.io.File;
@@ -21,7 +22,7 @@ public class BetterHurtCam implements ModInitializer {
     @Getter
     private static final File file = new File("./config/betterhurtcam.toml");
     @Getter
-    private static final BHCConfig config = (BHCConfig) new BHCConfig(file).readConfig();
+    private static final ConfigManager<BHCConfig> manager = ConfigManager.create(BHCConfig.class, "betterhurtcam");
 
 
     @Override

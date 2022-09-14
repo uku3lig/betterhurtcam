@@ -17,7 +17,7 @@ public class MixinOptionsScreen extends Screen {
     @Inject(method = "init", at = @At("RETURN"))
     public void addBetterHurtCamButton(CallbackInfo ci) {
         this.addDrawableChild(new ButtonWidget(this.width / 2 - 155, this.height / 6 + 24 - 6, 150, 20,
-                Text.of("BetterHurtCam..."), button -> MinecraftClient.getInstance().setScreen(new MultiplierInputScreen(this, BetterHurtCam.getConfig()))));
+                Text.of("BetterHurtCam..."), button -> MinecraftClient.getInstance().setScreen(new MultiplierInputScreen(this, BetterHurtCam.getManager()))));
     }
 
     protected MixinOptionsScreen(Text title) {
