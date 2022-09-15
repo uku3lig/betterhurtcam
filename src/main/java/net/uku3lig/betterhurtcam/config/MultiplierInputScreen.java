@@ -2,6 +2,7 @@ package net.uku3lig.betterhurtcam.config;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.uku3lig.ukulib.config.ConfigManager;
 import net.uku3lig.ukulib.config.TextInputScreen;
 
@@ -9,7 +10,7 @@ import java.util.Optional;
 
 public class MultiplierInputScreen extends TextInputScreen<Double> {
     public MultiplierInputScreen(Screen parent, ConfigManager<BHCConfig> manager) {
-        super(parent, Text.of("BetterHurtCam Config"), Text.translatable("betterhurtcam.option.strength"),
+        super(parent, Text.of("BetterHurtCam Config"), new TranslatableText("betterhurtcam.option.strength"),
                 v -> manager.getConfig().setMultiplier(v), manager.getConfig().getMultiplier(), manager);
     }
 
