@@ -31,14 +31,14 @@ public class MixinMinecraftClient {
 
 
         while (BetterHurtCam.getPlus().wasPressed()) {
-            manager.getConfig().setMultiplier(Math.min(2, manager.getConfig().getMultiplier() + 0.1));
+            manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() + 0.1);
             manager.saveConfig();
 
             player.sendMessage(Text.of("§fHurtcam multiplier increased to §3§l%.1f".formatted(manager.getConfig().getMultiplier())), true);
         }
 
         while (BetterHurtCam.getMinus().wasPressed()) {
-            manager.getConfig().setMultiplier(Math.max(0, manager.getConfig().getMultiplier() - 0.1));
+            manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() - 0.1);
             manager.saveConfig();
 
             player.sendMessage(Text.of("§fHurtcam multiplier decreased to §3§l%.1f".formatted(manager.getConfig().getMultiplier())), true);
