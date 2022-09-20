@@ -13,10 +13,11 @@ import net.uku3lig.ukulib.config.IConfig;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BHCConfig implements IConfig<BHCConfig> {
+    private boolean enabled;
     private double multiplier;
 
     @Override
     public BHCConfig defaultConfig() {
-        return new BHCConfig(0.3);
+        return new BHCConfig(true, 0.3);
     }
 }
