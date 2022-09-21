@@ -27,6 +27,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.13",
-    "fabric-key-binding-api-v1": "*"
+    "fabric-key-binding-api-v1": "*",
+    "ukulib": "0.2.0"
   }
 }

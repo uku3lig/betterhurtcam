@@ -4,7 +4,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.uku3lig.ukulib.config.ConfigManager;
-import net.uku3lig.ukulib.config.TextInputScreen;
+import net.uku3lig.ukulib.config.screen.TextInputScreen;
 
 import java.util.Optional;
 
