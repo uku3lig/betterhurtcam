@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.uku3lig.betterhurtcam.BetterHurtCam;
 import net.uku3lig.betterhurtcam.config.BHCConfig;
 import net.uku3lig.ukulib.config.ConfigManager;
@@ -16,6 +17,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MinecraftClient.class)
 @Slf4j
 public class MixinMinecraftClient {
+    private static final Text ON = Text.literal("ON").formatted(Formatting.BOLD, Formatting.GREEN);
+    private static final Text OFF = Text.literal("OFF").formatted(Formatting.BOLD, Formatting.RED);
+
     @Shadow public ClientPlayerEntity player;
 
     @Inject(at = @At("RETURN"), method = "tick")
@@ -26,7 +30,7 @@ public class MixinMinecraftClient {
             manager.getConfig().setEnabled(!manager.getConfig().isEnabled());
             manager.saveConfig();
 
-            player.sendMessage(Text.of("§fHurtcam " + (manager.getConfig().isEnabled() ? "§a§lON" : "§c§lOFF")), true);
+            player.sendMessage(Text.literal("Hurtcam ").append(manager.getConfig().isEnabled() ? ON : OFF), true);
         }
 
 
@@ -34,14 +38,16 @@ public class MixinMinecraftClient {
             manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() + 0.1);
             manager.saveConfig();
 
-            player.sendMessage(Text.of("§fHurtcam multiplier increased to §3§l%.1f".formatted(manager.getConfig().getMultiplier())), true);
+            Text multiplier = Text.literal("%.1f".formatted(manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
+            player.sendMessage(Text.literal("Hurtcam multiplier increased to ").append(multiplier), true);
         }
 
         while (BetterHurtCam.getMinus().wasPressed()) {
             manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() - 0.1);
             manager.saveConfig();
 
-            player.sendMessage(Text.of("§fHurtcam multiplier decreased to §3§l%.1f".formatted(manager.getConfig().getMultiplier())), true);
+            Text multiplier = Text.literal("%.1f".formatted(manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
+            player.sendMessage(Text.literal("Hurtcam multiplier decreased to ").append(multiplier), true);
         }
     }
 }
