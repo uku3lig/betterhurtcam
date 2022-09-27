@@ -13,11 +13,10 @@ public class BHCConfigScreen extends AbstractConfigScreen<BHCConfig> {
     }
 
     @Override
-    @SuppressWarnings("ConstantConditions")
     protected SimpleOption<?>[] getOptions(BHCConfig config) {
         return new SimpleOption[] {
                 SimpleOption.ofBoolean("betterhurtcam.option.enabled", config.isEnabled(), config::setEnabled),
-                Ukutils.createButton("betterhurtcam.option.strength", config.getMultiplier(), screen -> client.setScreen(new MultiplierInputScreen(screen, manager)))
+                Ukutils.createButton("betterhurtcam.option.strength", config.getMultiplier(), parent -> new MultiplierInputScreen(parent, manager))
         };
     }
 }
