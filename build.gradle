@@ -25,7 +25,7 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    include modApi("net.uku3lig:ukulib:${project.ukulib_version}")
+    modApi("net.uku3lig:ukulib:${project.ukulib_version}")
     include modImplementation(fabricApi.module("fabric-key-binding-api-v1", project.fabric_version))
 
     modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
