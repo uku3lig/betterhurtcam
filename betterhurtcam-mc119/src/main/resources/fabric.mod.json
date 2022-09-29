@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "betterhurtcam",
+  "id": "betterhurtcam-mc119",
   "version": "${version}",
-  "name": "BetterHurtCam",
+  "name": "BetterHurtCam+mc1.19",
   "description": "nohurtcam but better",
   "authors": [
     "uku"
@@ -12,16 +12,25 @@
     "repo": "https://github.com/uku3lig/betterhurtcam.git"
   },
   "license": "MIT",
-  "icon": "assets/betterhurtcam/icon.png",
   "environment": "client",
   "entrypoints": {
-    "main": [
-      "net.uku3lig.betterhurtcam.BetterHurtCam"
+    "modmenu": [
+      "net.uku3lig.betterhurtcam.mc119.ModMenuIntegration"
     ]
   },
+  "mixins": [
+    "betterhurtcam119.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.13",
     "fabric-key-binding-api-v1": "*",
-    "ukulib": "*"
+    "ukulib": ">=0.2.1",
+    "minecraft": "1.19.x"
+  },
+  "custom": {
+    "modmenu": {
+      "parent": "betterhurtcam",
+      "badges": [ "library" ]
+    }
   }
 }

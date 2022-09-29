@@ -1,4 +1,4 @@
-package net.uku3lig.betterhurtcam.mixin;
+package net.uku3lig.betterhurtcam.mc119.mixin;
 
 import lombok.extern.slf4j.Slf4j;
 import net.minecraft.client.MinecraftClient;
@@ -38,7 +38,7 @@ public class MixinMinecraftClient {
             manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() + 0.1);
             manager.saveConfig();
 
-            Text multiplier = Text.literal("%.1f".formatted(manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
+            Text multiplier = Text.literal(String.format("%.1f", manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
             player.sendMessage(Text.literal("Hurtcam multiplier increased to ").append(multiplier), true);
         }
 
@@ -46,7 +46,7 @@ public class MixinMinecraftClient {
             manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() - 0.1);
             manager.saveConfig();
 
-            Text multiplier = Text.literal("%.1f".formatted(manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
+            Text multiplier = Text.literal(String.format("%.1f", manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
             player.sendMessage(Text.literal("Hurtcam multiplier decreased to ").append(multiplier), true);
         }
     }
