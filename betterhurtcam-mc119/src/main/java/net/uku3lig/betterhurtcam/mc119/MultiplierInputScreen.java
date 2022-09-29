@@ -1,7 +1,8 @@
-package net.uku3lig.betterhurtcam.config;
+package net.uku3lig.betterhurtcam.mc119;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import net.uku3lig.betterhurtcam.config.BHCConfig;
 import net.uku3lig.ukulib.config.ConfigManager;
 import net.uku3lig.ukulib.config.screen.TextInputScreen;
 
