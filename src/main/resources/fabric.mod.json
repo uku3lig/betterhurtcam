@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "net.uku3lig.betterhurtcam.BetterHurtCam"
+    ],
+    "modmenu": [
+      "net.uku3lig.betterhurtcam.config.ModMenuIntegration"
     ]
   },
   "depends": {
