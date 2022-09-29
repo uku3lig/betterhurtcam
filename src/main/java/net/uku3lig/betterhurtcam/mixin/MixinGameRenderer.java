@@ -1,4 +1,4 @@
-package net.uku3lig.betterhurtcam.mc119.mixin;
+package net.uku3lig.betterhurtcam.mixin;
 
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
