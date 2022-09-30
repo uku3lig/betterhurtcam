@@ -1,6 +1,6 @@
 package net.uku3lig.betterhurtcam.mc116.mixin;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.LiteralText;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MinecraftClient.class)
-@Slf4j
+@Log4j2
 public class MixinMinecraftClient {
     private static final Text ON = new LiteralText("ON").formatted(Formatting.BOLD, Formatting.GREEN);
     private static final Text OFF = new LiteralText("OFF").formatted(Formatting.BOLD, Formatting.RED);
