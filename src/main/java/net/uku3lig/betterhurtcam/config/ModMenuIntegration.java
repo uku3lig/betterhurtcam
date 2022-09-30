@@ -2,11 +2,11 @@ package net.uku3lig.betterhurtcam.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
 
-@Slf4j
+@Log4j2
 public class ModMenuIntegration implements ModMenuApi {
     private static final ConfigScreenFactory<?> factory;
 
