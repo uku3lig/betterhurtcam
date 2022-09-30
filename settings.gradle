@@ -11,4 +11,5 @@ pluginManagement {
 include 'betterhurtcam-mc119'
 include 'betterhurtcam-mc118'
 include 'betterhurtcam-mc117'
+include 'betterhurtcam-mc116'
 
