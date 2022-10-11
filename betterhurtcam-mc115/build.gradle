@@ -2,7 +2,7 @@ dependencies {
     minecraft "com.mojang:minecraft:1.15.2"
     mappings "net.fabricmc:yarn:1.15.2+build.17:v2"
 
-    modApi "net.uku3lig:ukulib:0.2.1+1.15.2-build.39"
+    modApi "net.uku3lig:ukulib:0.2.1+1.15.2-build.42"
     modImplementation fabricApi.module("fabric-key-binding-api-v1", "0.28.5+1.15")
     modImplementation "com.terraformersmc:modmenu:1.10.6"
 }
