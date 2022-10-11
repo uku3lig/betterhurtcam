@@ -25,9 +25,6 @@
     "betterhurtcam115.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.13",
-    "fabric-key-binding-api-v1": "*",
-    "ukulib": ">=0.2",
     "minecraft": "1.15.x"
   },
   "custom": {
