@@ -20,7 +20,7 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
     protected Option[] getOptions(BHCConfig config) {
         return new Option[] {
                 new CyclingOption("betterhurtcam.option.enabled", (opt, amount) -> config.setEnabled((amount % 2 == 0) == config.isEnabled()),
-                        (opt, option) -> new TranslatableText("options.generic_value", "betterhurtcam.option.enabled", config.isEnabled())),
+                        (opt, option) -> new TranslatableText("options.generic_value", new TranslatableText("betterhurtcam.option.enabled"), config.isEnabled())),
                 Ukutils.createButton("betterhurtcam.option.strength", config.getMultiplier(), screen -> client.openScreen(new MultiplierInputScreen(screen, manager)))
         };
     }
