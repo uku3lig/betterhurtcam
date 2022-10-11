@@ -1,6 +1,7 @@
 package net.uku3lig.betterhurtcam.mc116;
 
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.client.option.CyclingOption;
 import net.minecraft.client.option.Option;
 import net.minecraft.text.Text;
@@ -20,7 +21,8 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
     protected Option[] getOptions(BHCConfig config) {
         return new Option[] {
                 new CyclingOption("betterhurtcam.option.enabled", (opt, amount) -> config.setEnabled((amount % 2 == 0) == config.isEnabled()),
-                        (opt, option) -> new TranslatableText("options.generic_value", new TranslatableText("betterhurtcam.option.enabled"), config.isEnabled())),
+                        (opt, option) -> new TranslatableText("options.generic_value", new TranslatableText("betterhurtcam.option.enabled"),
+                                config.isEnabled() ? ScreenTexts.ON : ScreenTexts.OFF)),
                 Ukutils.createButton("betterhurtcam.option.strength", config.getMultiplier(), screen -> client.openScreen(new MultiplierInputScreen(screen, manager)))
         };
     }
