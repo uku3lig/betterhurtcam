@@ -39,7 +39,7 @@ public class MixinMinecraftClient {
             manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() + 0.1);
             manager.saveConfig();
 
-            Text multiplier = new LiteralText(String.format("%.1f", manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
+            Text multiplier = new LiteralText(BetterHurtCam.format(manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
             player.addChatMessage(new LiteralText("Hurtcam multiplier increased to ").append(multiplier), true);
         }
 
@@ -47,7 +47,7 @@ public class MixinMinecraftClient {
             manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() - 0.1);
             manager.saveConfig();
 
-            Text multiplier = new LiteralText(String.format("%.1f", manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
+            Text multiplier = new LiteralText(BetterHurtCam.format(manager.getConfig().getMultiplier())).formatted(Formatting.BOLD, Formatting.DARK_AQUA);
             player.addChatMessage(new LiteralText("Hurtcam multiplier decreased to ").append(multiplier), true);
         }
     }

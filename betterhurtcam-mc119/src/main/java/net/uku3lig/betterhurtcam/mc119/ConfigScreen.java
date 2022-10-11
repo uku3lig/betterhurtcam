@@ -3,6 +3,7 @@ package net.uku3lig.betterhurtcam.mc119;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.option.SimpleOption;
 import net.minecraft.text.Text;
+import net.uku3lig.betterhurtcam.BetterHurtCam;
 import net.uku3lig.betterhurtcam.config.BHCConfig;
 import net.uku3lig.ukulib.config.ConfigManager;
 import net.uku3lig.ukulib.config.screen.AbstractConfigScreen;
@@ -17,7 +18,8 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
     protected SimpleOption<?>[] getOptions(BHCConfig config) {
         return new SimpleOption[] {
                 SimpleOption.ofBoolean("betterhurtcam.option.enabled", config.isEnabled(), config::setEnabled),
-                Ukutils.createOpenButton("betterhurtcam.option.strength", config.getMultiplier(), parent -> new MultiplierInputScreen(parent, manager))
+                Ukutils.createOpenButton("betterhurtcam.option.strength", BetterHurtCam.format(config.getMultiplier()),
+                        parent -> new MultiplierInputScreen(parent, manager))
         };
     }
 }
