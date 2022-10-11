@@ -19,9 +19,12 @@
       "net.uku3lig.betterhurtcam.BetterHurtCam"
     ]
   },
+  "mixins": [
+    "betterhurtcam.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.13",
     "fabric-key-binding-api-v1": "*",
-    "ukulib": "*"
+    "ukulib": ">=0.2.1"
   }
 }
