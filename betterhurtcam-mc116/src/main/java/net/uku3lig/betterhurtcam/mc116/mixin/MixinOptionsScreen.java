@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinOptionsScreen extends Screen {
     @Inject(method = "init", at = @At("RETURN"))
     public void addBetterHurtCamButton(CallbackInfo ci) {
-        this.children.add(new ButtonWidget(this.width / 2 - 155, this.height / 6 + 24 - 6, 150, 20,
+        this.addButton(new ButtonWidget(this.width / 2 - 155, this.height / 6 + 24 - 6, 150, 20,
                 Text.of("BetterHurtCam..."), button -> MinecraftClient.getInstance().openScreen(new ConfigScreen(this, BetterHurtCam.getManager()))));
     }
 
