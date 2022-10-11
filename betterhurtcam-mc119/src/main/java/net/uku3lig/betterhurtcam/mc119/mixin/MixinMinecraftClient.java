@@ -7,6 +7,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.uku3lig.betterhurtcam.BetterHurtCam;
 import net.uku3lig.betterhurtcam.config.BHCConfig;
+import net.uku3lig.betterhurtcam.mc119.KeybindingManager;
 import net.uku3lig.ukulib.config.ConfigManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -26,7 +27,7 @@ public class MixinMinecraftClient {
     private void onEndTick(CallbackInfo info) {
         ConfigManager<BHCConfig> manager = BetterHurtCam.getManager();
 
-        while(BetterHurtCam.getToggle().wasPressed()) {
+        while(KeybindingManager.getToggle().wasPressed()) {
             manager.getConfig().setEnabled(!manager.getConfig().isEnabled());
             manager.saveConfig();
 
@@ -34,7 +35,7 @@ public class MixinMinecraftClient {
         }
 
 
-        while (BetterHurtCam.getPlus().wasPressed()) {
+        while (KeybindingManager.getPlus().wasPressed()) {
             manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() + 0.1);
             manager.saveConfig();
 
@@ -42,7 +43,7 @@ public class MixinMinecraftClient {
             player.sendMessage(Text.literal("Hurtcam multiplier increased to ").append(multiplier), true);
         }
 
-        while (BetterHurtCam.getMinus().wasPressed()) {
+        while (KeybindingManager.getMinus().wasPressed()) {
             manager.getConfig().setMultiplier(manager.getConfig().getMultiplier() - 0.1);
             manager.saveConfig();
 
