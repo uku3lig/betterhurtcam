@@ -34,8 +34,6 @@ dependencies {
         transitive false
     }
 
-    // API. You technically don't need it, but it's extremely useful for not having to write the same code in every mod.
-    modImplementation "io.github.minecraft-cursed-legacy:cursed-legacy-api:${project.api_version}"
     include implementation("com.moandjiezana.toml:toml4j:${project.toml4j_version}")
 }
 

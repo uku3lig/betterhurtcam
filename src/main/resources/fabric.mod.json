@@ -17,7 +17,6 @@
     "betterhurtcam.mixins.json"
   ],
   "depends": {
-    "minecraft": "1.0.0-beta.7.3",
-    "api": "*"
+    "minecraft": "1.0.0-beta.7.3"
   }
 }
