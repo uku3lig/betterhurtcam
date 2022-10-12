@@ -15,18 +15,15 @@
   "icon": "assets/betterhurtcam/icon.png",
   "environment": "client",
   "entrypoints": {
-    "main": [
+    "init": [
       "net.uku3lig.betterhurtcam.BetterHurtCam"
-    ],
-    "modmenu": [
-      "net.uku3lig.betterhurtcam.config.ModMenuIntegration"
     ]
   },
   "mixins": [
     "betterhurtcam.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.13",
-    "fabric-key-binding-api-v1": "*"
+    "minecraft": "1.0.0-beta.7.3",
+    "api": "*"
   }
 }

@@ -1,64 +1,109 @@
 package net.uku3lig.betterhurtcam.config;
 
-import lombok.extern.slf4j.Slf4j;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.ScreenTexts;
-import net.minecraft.client.gui.screen.option.GameOptionsScreen;
-import net.minecraft.client.gui.widget.ButtonListWidget;
-import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.option.Option;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.OrderedText;
-import net.minecraft.text.Text;
+import lombok.extern.log4j.Log4j2;
+import net.minecraft.client.gui.Screen;
+import net.minecraft.client.gui.widgets.Button;
+import net.minecraft.client.gui.widgets.OptionButton;
+import net.minecraft.client.gui.widgets.Slider;
+import net.minecraft.client.resource.language.TranslationStorage;
+import net.minecraft.client.util.ScreenScaler;
 import net.uku3lig.betterhurtcam.BetterHurtCam;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Optional;
 
-@Slf4j
-public abstract class AbstractConfigScreen extends GameOptionsScreen {
+@Log4j2
+public abstract class AbstractConfigScreen extends Screen {
     protected final Config config;
-    protected ButtonListWidget buttonList;
+    private final Screen parent;
+    protected final String title;
 
-    protected AbstractConfigScreen(Screen parent, Text title, Config config) {
-        super(parent, MinecraftClient.getInstance().options, title);
+    protected AbstractConfigScreen(Screen parent, String title, Config config) {
+        super();
+        this.parent = parent;
         this.config = config;
+        this.title = title;
     }
 
-    protected abstract Option[] getOptions();
+    protected abstract ConfigOption[] getOptions();
 
+    @SuppressWarnings("unchecked")
     @Override
-    protected void init() {
-        super.init();
-        buttonList = new ButtonListWidget(this.client, this.width, this.height, 32, this.height - 32, 25);
-        buttonList.addAll(getOptions());
-        this.addSelectableChild(buttonList);
-        drawFooterButtons();
-    }
+    public void init() {
+        TranslationStorage storage = TranslationStorage.getInstance();
+        int counter = 0;
 
-    @SuppressWarnings("ConstantConditions")
-    protected void drawFooterButtons() {
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 27, 200, 20, ScreenTexts.DONE, button -> this.client.setScreen(this.parent)));
-    }
+        for (ConfigOption option : getOptions()) {
+            if (option.isSlider()) {
+                this.buttons.add(new Slider(option.getId(), this.width / 2 - 155 + counter % 2 * 160, this.height / 6 + 24 * (counter >> 1), null, storage.translate(option.getTranslationKey()), option.getGetter().get()));
+            } else {
+                this.buttons.add(new OptionButton(option.getId(), this.width / 2 - 155 + counter % 2 * 160, this.height / 6 + 24 * (counter >> 1), null, storage.translate(option.getTranslationKey())));
+            }
 
-    @Override
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        this.renderBackground(matrices);
-        this.buttonList.render(matrices, mouseX, mouseY, delta);
-        DrawableHelper.drawCenteredText(matrices, this.textRenderer, this.title, this.width / 2, 20, 0xFFFFFF);
-        super.render(matrices, mouseX, mouseY, delta);
-        List<OrderedText> list = GameOptionsScreen.getHoveredButtonTooltip(this.buttonList, mouseX, mouseY);
-        this.renderOrderedTooltip(matrices, list, mouseX, mouseY);
+            ++counter;
+        }
+
+        this.buttons.add(new Button(200, this.width / 2 - 100, this.height / 6 + 168, storage.translate("gui.done")));
     }
 
     @Override
-    public void removed() {
+    protected void buttonClicked(Button arg) {
+        if (arg.active) {
+            if (arg.id < 100 && arg instanceof OptionButton) {
+                Optional<ConfigOption> option = getOption(arg.id);
+                if (option.isPresent()) {
+                    option.get().getSetter().accept(1);
+                    arg.text = getTranslatedValue(option.get());
+                }
+            }
+
+            if (arg.id == 200) {
+                this.minecraft.options.saveOptions();
+                this.minecraft.openScreen(this.parent);
+            }
+
+            ScreenScaler var2 = new ScreenScaler(this.minecraft.options, this.minecraft.actualWidth, this.minecraft.actualHeight);
+            int var3 = var2.getScaledWidth();
+            int var4 = var2.getScaledHeight();
+            this.init(this.minecraft, var3, var4);
+        }
+    }
+
+    private String getTranslatedValue(ConfigOption option) {
+        String text = TranslationStorage.getInstance().translate(option.getTranslationKey()) + ": ";
+        switch (option.getType()) {
+            case BOOLEAN:
+                text += option.getGetter().get() == 1 ? "ON" : "OFF";
+                break;
+            case INTEGER:
+                text += option.getGetter().get().intValue();
+                break;
+            case DOUBLE:
+                text += option.getGetter().get();
+                break;
+        }
+        return text;
+    }
+
+    private Optional<ConfigOption> getOption(int id) {
+        return Arrays.stream(getOptions()).filter(option -> option.getId() == id).findFirst();
+    }
+
+    @Override
+    public void render(int i, int j, float f) {
+        this.renderBackground();
+        this.drawTextWithShadowCentred(this.textManager, this.title, this.width / 2, 20, 0xFFFFFF);
+        super.render(i, j, f);
+    }
+
+    @Override
+    public void onClose() {
+        super.onClose();
         try {
             config.writeConfig(BetterHurtCam.getFile());
         } catch (IOException e) {
-            log.warn("Could not save configuration file", e);
+            log.warn("Could not write configuration file", e);
         }
     }
 }

@@ -1,23 +1,24 @@
 package net.uku3lig.betterhurtcam.mixin;
 
 import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import net.uku3lig.betterhurtcam.BetterHurtCam;
+import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
 public class MixinGameRenderer {
-    @ModifyArg(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Vec3f;getDegreesQuaternion(F)Lnet/minecraft/util/math/Quaternion;"), method = "bobViewWhenHurt")
-    public float changeBobIntensity(float value) {
-        return (float) (BetterHurtCam.getConfig().getMultiplier() * value);
+    @Redirect(method = "method_1849", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glRotatef(FFFF)V", remap = false))
+    public void changeBobIntensity(float angle, float x, float y, float z) {
+        angle = BetterHurtCam.getConfig().getMultiplier() * angle;
+        GL11.glRotatef(angle, x, y, z);
     }
 
-    @Inject(method = "bobViewWhenHurt", at = @At("HEAD"), cancellable = true)
-    public void disableHurtCam(MatrixStack matrices, float tickDelta, CallbackInfo ci) {
+    @Inject(method = "method_1849", at = @At("HEAD"), cancellable = true)
+    public void disableHurtCam(float f, CallbackInfo ci) {
         if (!BetterHurtCam.getConfig().isEnabled()) ci.cancel();
     }
 }

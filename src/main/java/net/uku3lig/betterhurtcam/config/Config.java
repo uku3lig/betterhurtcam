@@ -5,22 +5,21 @@ import com.moandjiezana.toml.TomlWriter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.File;
 import java.io.IOException;
 
-@Slf4j
+@Log4j2
 @Getter
 @Setter
 @AllArgsConstructor
 public class Config {
     private boolean enabled;
-    private double multiplier;
-    private boolean increased;
+    private float multiplier;
 
     public Config() {
-        this(true, 0.3, false);
+        this(true, 0.3f);
     }
 
     public static Config readConfig(File file) {
