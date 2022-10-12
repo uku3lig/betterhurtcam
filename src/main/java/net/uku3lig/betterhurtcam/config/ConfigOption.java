@@ -3,22 +3,15 @@ package net.uku3lig.betterhurtcam.config;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-
 @Getter
 @AllArgsConstructor
-public class ConfigOption {
-    private final int id;
-    private final String translationKey;
-    private final Consumer<Integer> setter;
-    private final Supplier<Float> getter;
-    private final boolean isSlider;
-    private final OptionType type;
+public enum ConfigOption {
+    ENABLED(69, "Hurtcam", false, true),
+    MULTIPLIER(70, "Hurtcam Multiplier", true, false),
+    ;
 
-    public enum OptionType {
-        BOOLEAN,
-        INTEGER,
-        DOUBLE
-    }
+    private final int id;
+    private final String text;
+    private final boolean isSlider;
+    private final boolean isToggle;
 }

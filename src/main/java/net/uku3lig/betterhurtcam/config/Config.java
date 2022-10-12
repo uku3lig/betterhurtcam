@@ -24,18 +24,19 @@ public class Config {
 
     public static Config readConfig(File file) {
         if (!file.exists()) {
-            try {
-                new Config().writeConfig(file);
-            } catch (IOException e) {
-                log.warn("Could not write default configuration file", e);
-            }
+            new Config().writeConfig(file);
             return new Config();
         } else {
             return new Toml().read(file).to(Config.class);
         }
     }
 
-    public void writeConfig(File file) throws IOException {
-        new TomlWriter().write(this, file);
+    public void writeConfig(File file) {
+        try {
+            TomlWriter tomlWriter = new TomlWriter();
+            tomlWriter.write(this, file);
+        } catch (IOException e) {
+            log.warn("Could not write configuration file", e);
+        }
     }
 }

@@ -6,10 +6,10 @@
   "mixins": [
     "MixinGameRenderer"
   ],
+  "client": [
+    "MixinVideoSettingsScreen"
+  ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "client": [
-    "MixinOptionsScreen"
-  ]
+  }
 }

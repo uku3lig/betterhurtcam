@@ -12,13 +12,7 @@
     "repo": "https://github.com/uku3lig/betterhurtcam.git"
   },
   "license": "MIT",
-  "icon": "assets/betterhurtcam/icon.png",
   "environment": "client",
-  "entrypoints": {
-    "init": [
-      "net.uku3lig.betterhurtcam.BetterHurtCam"
-    ]
-  },
   "mixins": [
     "betterhurtcam.mixins.json"
   ],
