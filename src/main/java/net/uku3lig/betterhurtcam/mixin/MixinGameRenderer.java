@@ -13,12 +13,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinGameRenderer {
     @Redirect(method = "method_1849", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/GL11;glRotatef(FFFF)V", remap = false))
     public void changeBobIntensity(float angle, float x, float y, float z) {
-        angle = BetterHurtCam.getConfig().getMultiplier() * angle;
+        angle = BetterHurtCam.getManager().getConfig().getMultiplier() * angle;
         GL11.glRotatef(angle, x, y, z);
     }
 
     @Inject(method = "method_1849", at = @At("HEAD"), cancellable = true)
     public void disableHurtCam(float f, CallbackInfo ci) {
-        if (!BetterHurtCam.getConfig().isEnabled()) ci.cancel();
+        if (!BetterHurtCam.getManager().getConfig().isEnabled()) ci.cancel();
     }
 }

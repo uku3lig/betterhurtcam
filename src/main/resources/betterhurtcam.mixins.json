@@ -7,7 +7,7 @@
     "MixinGameRenderer"
   ],
   "client": [
-    "MixinVideoSettingsScreen"
+    "MixinOptionsScreen"
   ],
   "injectors": {
     "defaultRequire": 1

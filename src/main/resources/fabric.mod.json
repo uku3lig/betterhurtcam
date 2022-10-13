@@ -17,6 +17,7 @@
     "betterhurtcam.mixins.json"
   ],
   "depends": {
-    "minecraft": "1.0.0-beta.7.3"
+    "minecraft": "1.0.0-beta.7.3",
+    "ukulib": ">=0.2.2"
   }
 }

@@ -15,6 +15,9 @@ repositories {
         name 'HalfOf2'
         url 'https://storage.googleapis.com/devan-maven/'
     }
+    maven {
+        url "https://maven.uku3lig.net/snapshots"
+    }
 }
 
 minecraft {
@@ -34,7 +37,10 @@ dependencies {
         transitive false
     }
 
-    include implementation("com.moandjiezana.toml:toml4j:${project.toml4j_version}")
+    modApi("net.uku3lig:ukulib:${project.ukulib_version}") {
+        transitive false
+    }
+    implementation("com.moandjiezana.toml:toml4j:${project.toml4j_version}")
 }
 
 processResources {
