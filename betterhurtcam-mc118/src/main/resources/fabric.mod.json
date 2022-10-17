@@ -19,9 +19,6 @@
     ],
     "bhc": [
       "net.uku3lig.betterhurtcam.mc118.UkulibIntegration"
-    ],
-    "modmenu": [
-      "net.uku3lig.betterhurtcam.mc118.ModMenuIntegration"
     ]
   },
   "mixins": [

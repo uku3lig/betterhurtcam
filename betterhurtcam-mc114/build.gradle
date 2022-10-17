@@ -4,5 +4,4 @@ dependencies {
 
     modApi "net.uku3lig:ukulib:0.3.0+1.14.4"
     modImplementation fabricApi.module("fabric-key-binding-api-v1", "0.28.5+1.14")
-    modImplementation "io.github.prospector:modmenu:1.7.17+build.1"
 }

@@ -4,5 +4,4 @@ dependencies {
 
     modApi "net.uku3lig:ukulib:0.3.0+1.16.5"
     modImplementation fabricApi.module("fabric-key-binding-api-v1", "0.42.0+1.16")
-    modImplementation "com.terraformersmc:modmenu:1.16.23"
 }
