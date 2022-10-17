@@ -10,7 +10,6 @@
     "defaultRequire": 1
   },
   "client": [
-    "MixinGameRenderer",
-    "MixinOptionsScreen"
+    "MixinGameRenderer"
   ]
 }
