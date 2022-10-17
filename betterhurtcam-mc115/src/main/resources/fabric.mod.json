@@ -17,6 +17,9 @@
     "main": [
       "net.uku3lig.betterhurtcam.mc115.KeybindingManager"
     ],
+    "bhc": [
+      "net.uku3lig.betterhurtcam.mc115.UkulibIntegration"
+    ],
     "modmenu": [
       "net.uku3lig.betterhurtcam.mc115.ModMenuIntegration"
     ]

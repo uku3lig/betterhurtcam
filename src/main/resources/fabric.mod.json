@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "net.uku3lig.betterhurtcam.BetterHurtCam"
+    ],
+    "ukulib": [
+      "net.uku3lig.betterhurtcam.UkulibIntegration"
     ]
   },
   "depends": {
