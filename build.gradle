@@ -19,6 +19,7 @@ allprojects {
 
     version = project.mod_version
     group = project.maven_group
+    sourceCompatibility = 8
 
     repositories {
         maven {
@@ -32,7 +33,7 @@ allprojects {
 
     tasks.withType(JavaCompile).configureEach {
         it.options.encoding = "UTF-8"
-        it.options.release = 8
+        it.options.release.set(Integer.parseInt(project.sourceCompatibility.majorVersion))
     }
 
     processResources {

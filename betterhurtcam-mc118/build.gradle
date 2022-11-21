@@ -1,3 +1,5 @@
+sourceCompatibility = 17
+
 dependencies {
     minecraft "com.mojang:minecraft:1.18.2"
     mappings "net.fabricmc:yarn:1.18.2+build.4:v2"
