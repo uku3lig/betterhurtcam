@@ -23,7 +23,9 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
                 new CyclingOption("betterhurtcam.option.enabled", (opt, amount) -> config.setEnabled((amount % 2 == 0) == config.isEnabled()),
                         (opt, option) -> option.getDisplayPrefix() + I18n.translate(config.isEnabled() ? "options.on" : "options.off")),
                 Ukutils.createButton("betterhurtcam.option.strength", BetterHurtCam.format(config.getMultiplier()),
-                        screen -> minecraft.openScreen(new MultiplierInputScreen(screen, manager)))
+                        screen -> minecraft.openScreen(new MultiplierInputScreen(screen, manager))),
+                new CyclingOption("betterhurtcam.option.heartBlink", (opt, amount) -> config.setHeartBlink((amount % 2 == 0) == config.isHeartBlink()),
+                        (opt, option) -> option.getDisplayPrefix() + I18n.translate(config.isHeartBlink() ? "options.on" : "options.off"))
         };
     }
 }

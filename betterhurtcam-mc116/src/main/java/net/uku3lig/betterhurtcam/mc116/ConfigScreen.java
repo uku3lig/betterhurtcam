@@ -25,7 +25,10 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
                         (opt, option) -> new TranslatableText("options.generic_value", new TranslatableText("betterhurtcam.option.enabled"),
                                 config.isEnabled() ? ScreenTexts.ON : ScreenTexts.OFF)),
                 Ukutils.createButton("betterhurtcam.option.strength", BetterHurtCam.format(config.getMultiplier()),
-                        screen -> client.openScreen(new MultiplierInputScreen(screen, manager)))
+                        screen -> client.openScreen(new MultiplierInputScreen(screen, manager))),
+                new CyclingOption("betterhurtcam.option.heartBlink", (opt, amount) -> config.setHeartBlink((amount % 2 == 0) == config.isHeartBlink()),
+                        (opt, option) -> new TranslatableText("options.generic_value", new TranslatableText("betterhurtcam.option.heartBlink"),
+                                config.isHeartBlink() ? ScreenTexts.ON : ScreenTexts.OFF))
         };
     }
 }

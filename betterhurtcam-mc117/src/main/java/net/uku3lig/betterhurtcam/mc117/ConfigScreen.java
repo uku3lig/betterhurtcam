@@ -21,7 +21,8 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
         return new Option[] {
                 CyclingOption.create("betterhurtcam.option.enabled", opt -> config.isEnabled(), (opt, option, value) -> config.setEnabled(value)),
                 Ukutils.createButton("betterhurtcam.option.strength", BetterHurtCam.format(config.getMultiplier()),
-                        screen -> client.setScreen(new MultiplierInputScreen(screen, manager)))
+                        screen -> client.setScreen(new MultiplierInputScreen(screen, manager))),
+                CyclingOption.create("betterhurtcam.option.heartBlink", opt -> config.isHeartBlink(), (opt, option, value) -> config.setHeartBlink(value))
         };
     }
 }
