@@ -1,6 +1,7 @@
 {
   "betterhurtcam.option.enabled": "Hurtcam Enabled",
   "betterhurtcam.option.strength": "Hurtcam Multiplier",
+  "betterhurtcam.option.heartBlink": "Health Bar Blinking",
 
   "key.betterhurtcam.plus": "Increase hurtcam strength",
   "key.betterhurtcam.minus": "Decrease hurtcam strength"

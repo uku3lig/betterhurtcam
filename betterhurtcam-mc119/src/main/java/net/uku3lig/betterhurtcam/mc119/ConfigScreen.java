@@ -19,7 +19,8 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
         return new SimpleOption[] {
                 SimpleOption.ofBoolean("betterhurtcam.option.enabled", config.isEnabled(), config::setEnabled),
                 Ukutils.createOpenButton("betterhurtcam.option.strength", BetterHurtCam.format(config.getMultiplier()),
-                        parent -> new MultiplierInputScreen(parent, manager))
+                        parent -> new MultiplierInputScreen(parent, manager)),
+                SimpleOption.ofBoolean("betterhurtcam.option.heartBlink", config.isHeartBlink(), config::setHeartBlink)
         };
     }
 }

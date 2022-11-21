@@ -13,9 +13,10 @@ import net.uku3lig.ukulib.config.IConfig;
 public class BHCConfig implements IConfig<BHCConfig> {
     private boolean enabled;
     private double multiplier;
+    private boolean heartBlink;
 
     @Override
     public BHCConfig defaultConfig() {
-        return new BHCConfig(true, 0.3);
+        return new BHCConfig(true, 0.3, true);
     }
 }
