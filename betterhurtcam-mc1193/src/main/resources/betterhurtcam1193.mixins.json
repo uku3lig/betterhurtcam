@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.uku3lig.betterhurtcam.mc1193.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinMinecraftClient"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "MixinGameRenderer",
+    "MixinInGameHud"
+  ]
+}
