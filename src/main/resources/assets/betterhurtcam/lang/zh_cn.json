@@ -1,0 +1,8 @@
+{
+  "betterhurtcam.option.enabled": "启用 Hurtcam",
+  "betterhurtcam.option.strength": "Hurtcam 乘数",
+  "betterhurtcam.option.heartBlink": "生命条闪动",
+
+  "key.betterhurtcam.plus": "增加 hurtcam 强度",
+  "key.betterhurtcam.minus": "减弱 hurtcam 强度"
+}
