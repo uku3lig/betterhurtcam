@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "betterhurtcam-mc1193",
+  "id": "betterhurtcam-mc1194",
   "version": "${version}",
-  "name": "BetterHurtCam+mc1.19.3",
+  "name": "BetterHurtCam+mc1.19.4",
   "description": "nohurtcam but better",
   "authors": [
     "uku"
@@ -15,17 +15,17 @@
   "environment": "client",
   "entrypoints": {
     "main": [
-      "net.uku3lig.betterhurtcam.mc1193.KeybindingManager"
+      "net.uku3lig.betterhurtcam.mc1194.KeybindingManager"
     ],
     "bhc": [
-      "net.uku3lig.betterhurtcam.mc1193.UkulibIntegration"
+      "net.uku3lig.betterhurtcam.mc1194.UkulibIntegration"
     ]
   },
   "mixins": [
-    "betterhurtcam1193.mixins.json"
+    "betterhurtcam1194.mixins.json"
   ],
   "depends": {
-    "minecraft": "1.19.3"
+    "minecraft": ">=1.19.4"
   },
   "custom": {
     "modmenu": {
