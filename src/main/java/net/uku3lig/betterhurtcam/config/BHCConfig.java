@@ -11,12 +11,13 @@ import net.uku3lig.ukulib.config.IConfig;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BHCConfig implements IConfig<BHCConfig> {
-    private boolean enabled;
-    private double multiplier;
-    private boolean heartBlink;
+    private boolean enabled = true;
+    private double multiplier = 0.3;
+    private boolean heartBlink = true;
+    private HurtCamType type = HurtCamType.YAW_BASED;
 
     @Override
     public BHCConfig defaultConfig() {
-        return new BHCConfig(true, 0.3, true);
+        return new BHCConfig();
     }
 }

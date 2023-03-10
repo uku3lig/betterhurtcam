@@ -2,7 +2,12 @@
   "betterhurtcam.option.enabled": "Hurtcam Enabled",
   "betterhurtcam.option.strength": "Hurtcam Multiplier",
   "betterhurtcam.option.heartBlink": "Health Bar Blinking",
+  "betterhurtcam.option.type": "Hurtcam Type",
+  "betterhurtcam.option.type.tooltip": "- Old: 1.19.3 and lower, no direction change\n- Yaw-based: tilt direction reflects the damage source",
 
   "key.betterhurtcam.plus": "Increase hurtcam strength",
-  "key.betterhurtcam.minus": "Decrease hurtcam strength"
+  "key.betterhurtcam.minus": "Decrease hurtcam strength",
+
+  "betterhurtcam.type.old": "Old",
+  "betterhurtcam.type.yawBased": "Yaw-based"
 }
