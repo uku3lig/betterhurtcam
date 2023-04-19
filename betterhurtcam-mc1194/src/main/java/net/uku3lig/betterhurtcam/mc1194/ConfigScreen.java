@@ -26,7 +26,7 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
                         parent -> new MultiplierInputScreen(parent, manager)),
                 SimpleOption.ofBoolean("betterhurtcam.option.heartBlink", config.isHeartBlink(), config::setHeartBlink),
                 new SimpleOption<>("betterhurtcam.option.type", SimpleOption.constantTooltip(Text.translatable("betterhurtcam.option.type.tooltip")),
-                        SimpleOption.enumValueText(),
+                        (optionText, value) -> Text.translatable(value.getTranslationKey()),
                         new SimpleOption.PotentialValuesBasedCallbacks<>(Arrays.asList(HurtCamType.values()), Codec.INT.xmap(HurtCamType::findById, HurtCamType::getId)),
                         config.getType(), config::setType),
         };
