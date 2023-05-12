@@ -1,9 +1,0 @@
-sourceCompatibility = 16
-
-dependencies {
-    minecraft "com.mojang:minecraft:1.17.1"
-    mappings "net.fabricmc:yarn:1.17.1+build.65:v2"
-
-    modApi "net.uku3lig:ukulib:0.3.1+1.17.1"
-    modImplementation fabricApi.module("fabric-key-binding-api-v1", "0.46.1+1.17")
-}

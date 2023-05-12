@@ -1,58 +1,19 @@
 plugins {
-    id 'fabric-loom' version '1.1-SNAPSHOT'
-    id 'io.github.juuxel.loom-quiltflower' version '1.8.0'
-    id "io.freefair.lombok" version "6.6.2"
-    id 'org.ajoberstar.grgit' version '5.0.0'
+    id "fabric-loom" version "1.2-SNAPSHOT"
+    id "io.github.juuxel.loom-quiltflower" version "1.8.0"
+    id "io.freefair.lombok" version "8.0.1"
+    id "org.ajoberstar.grgit" version "5.0.0"
 }
 
-loom {
-    // im not sure what this does,
-    // but i think we might need it
-    runConfigs.configureEach {
-        ideConfigGenerated = true
+version = "${project.mod_version}+mc${project.minecraft_version}${grgit.status().clean ? "" : "-dirty"}"
+group = project.maven_group
+
+repositories {
+    maven {
+        url "https://maven.uku3lig.net/releases"
     }
-}
-
-allprojects {
-    apply plugin: "fabric-loom"
-    apply plugin: "io.github.juuxel.loom-quiltflower"
-    apply plugin: "io.freefair.lombok"
-
-    version = "${project.mod_version}${grgit.status().clean ? "" : "-dirty"}"
-    group = project.maven_group
-    sourceCompatibility = 8
-
-    repositories {
-        maven {
-            url "https://maven.uku3lig.net/releases"
-        }
-        maven {
-            url "https://maven.uku3lig.net/snapshots"
-        }
-    }
-
-    dependencies {
-        modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    }
-
-    tasks.withType(JavaCompile).configureEach {
-        it.options.encoding = "UTF-8"
-        it.options.release.set(Integer.parseInt(project.sourceCompatibility.majorVersion))
-    }
-
-    processResources {
-        inputs.property "version", project.version
-        filteringCharset "UTF-8"
-
-        filesMatching("fabric.mod.json") {
-            expand "version": project.version
-        }
-    }
-
-    jar {
-        from("LICENSE") {
-            rename { "${it}_${project.archivesBaseName}" }
-        }
+    maven {
+        url = "https://maven.uku3lig.net/snapshots"
     }
 }
 
@@ -60,23 +21,35 @@ dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    modCompileOnly "net.uku3lig:ukulib:${project.ukulib_version}"
-    modCompileOnly fabricApi.module("fabric-key-binding-api-v1", project.fabric_version)
+    include(modImplementation(fabricApi.module("fabric-key-binding-api-v1", project.fabric_version)))
 
-    subprojects.forEach((project) -> {
-        include(project) {
-            transitive = false
-        }
-    })
+    modApi("net.uku3lig:ukulib:${project.ukulib_version}")
 }
 
-subprojects {
-    dependencies {
-        // include the root project because that's where our common code is
-        implementation(project(path: ":", configuration: "namedElements")) {
-            // having 2 fabric loaders from the sub project and root project causes issues so we get rid of one.
-            exclude group: "net.fabricmc", module: "fabric-loader"
-        }
+processResources {
+    inputs.property "version", project.version
+    filteringCharset "UTF-8"
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+}
+
+java {
+    archivesBaseName = project.archives_base_name
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archivesBaseName}" }
     }
 }

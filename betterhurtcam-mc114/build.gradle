@@ -1,7 +1,0 @@
-dependencies {
-    minecraft "com.mojang:minecraft:1.14.4"
-    mappings "net.fabricmc:yarn:1.14.4+build.18:v2"
-
-    modApi "net.uku3lig:ukulib:0.3.1+1.14.4"
-    modImplementation fabricApi.module("fabric-key-binding-api-v1", "0.28.5+1.14")
-}
