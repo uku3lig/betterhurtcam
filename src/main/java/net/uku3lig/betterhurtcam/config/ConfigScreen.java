@@ -7,6 +7,7 @@ import net.uku3lig.ukulib.config.option.TypedInputOption;
 import net.uku3lig.ukulib.config.option.WidgetCreator;
 import net.uku3lig.ukulib.config.screen.AbstractConfigScreen;
 
+import java.util.Locale;
 import java.util.Optional;
 
 public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
@@ -18,7 +19,7 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
     protected WidgetCreator[] getWidgets(BHCConfig config) {
         return new WidgetCreator[] {
                 CyclingOption.ofBoolean("betterhurtcam.option.enabled", config.isEnabled(), config::setEnabled),
-                new TypedInputOption<>("betterhurtcam.option.strength", "%.2f".formatted(config.getMultiplier()), config::setMultiplier, this::convert),
+                new TypedInputOption<>("betterhurtcam.option.strength", String.format(Locale.ROOT, "%.2f", config.getMultiplier()), config::setMultiplier, this::convert),
                 CyclingOption.ofBoolean("betterhurtcam.option.heartBlink", config.isHeartBlink(), config::setHeartBlink),
                 CyclingOption.ofTranslatableEnum("betterhurtcam.option.type", HurtCamType.class, config.getType(), config::setType)
         };
@@ -26,7 +27,7 @@ public class ConfigScreen extends AbstractConfigScreen<BHCConfig> {
 
     private Optional<Double> convert(String value) {
         try {
-            return Optional.of(Double.parseDouble(value));
+            return Optional.of(Double.parseDouble(value.replace(',', '.')));
         } catch (Exception e) {
             return Optional.empty();
         }
