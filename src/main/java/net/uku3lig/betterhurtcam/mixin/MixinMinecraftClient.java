@@ -10,6 +10,7 @@ import net.uku3lig.betterhurtcam.config.BHCConfig;
 import net.uku3lig.ukulib.config.ConfigManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -17,7 +18,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MinecraftClient.class)
 @Slf4j
 public class MixinMinecraftClient {
+    @Unique
     private static final Text ON = Text.literal("ON").formatted(Formatting.BOLD, Formatting.GREEN);
+    @Unique
     private static final Text OFF = Text.literal("OFF").formatted(Formatting.BOLD, Formatting.RED);
 
     @Shadow public ClientPlayerEntity player;
@@ -51,6 +54,7 @@ public class MixinMinecraftClient {
         }
     }
 
+    @Unique
     private String getMultiplier(BHCConfig config) {
         return "%.2f".formatted(config.getMultiplier());
     }
