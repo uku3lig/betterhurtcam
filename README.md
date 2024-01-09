@@ -8,3 +8,9 @@
 ### Dependencies
 * [Fabric API](https://modrinth.com/mod/fabric-api) (or [Quilted Fabric API](https://modrinth.com/mod/qsl) if you use Quilt)
 * [Mod Menu *(optional)*](https://modrinth.com/mod/modmenu)
+
+## Sponsors
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Tutanota_logo.svg" width=300 />
+
+Massive thanks to [Tuta](https://tuta.com) for their support!
