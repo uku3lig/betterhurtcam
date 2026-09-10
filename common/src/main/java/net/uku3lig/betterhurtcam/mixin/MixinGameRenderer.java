@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GameRenderer.class)
 public class MixinGameRenderer {
-    @ModifyArg(at = @At(value = "INVOKE", target = "Lcom/mojang/math/Axis;rotationDegrees(F)Lorg/joml/Quaternionf;"), method = "bobHurt", require = 4)
+    @ModifyArg(at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;rotateDegrees(Lcom/mojang/math/Axis;F)V"), method = "bobHurt", index = 1, require = 4)
     public float changeBobIntensity(float value) {
         return (float) (BetterHurtCam.getManager().getConfig().getMultiplier() * value);
     }

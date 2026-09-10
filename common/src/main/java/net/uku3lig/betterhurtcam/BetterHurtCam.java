@@ -9,14 +9,13 @@ import net.minecraft.resources.Identifier;
 import net.uku3lig.betterhurtcam.config.BHCConfig;
 import net.uku3lig.ukulib.config.ConfigManager;
 import net.uku3lig.ukulib.utils.Ukutils;
-import org.lwjgl.glfw.GLFW;
 
 public class BetterHurtCam {
     private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(Identifier.fromNamespaceAndPath("betterhurtcam", "key"));
 
-    private static final KeyMapping toggle = new KeyMapping("key.betterhurtcam.toggle", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_F8, CATEGORY);
-    private static final KeyMapping plus = new KeyMapping("key.betterhurtcam.plus", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_F7, CATEGORY);
-    private static final KeyMapping minus = new KeyMapping("key.betterhurtcam.minus", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_F6, CATEGORY);
+    private static final KeyMapping toggle = new KeyMapping("key.betterhurtcam.toggle", InputConstants.Type.KEYBOARD, InputConstants.KEY_F8, CATEGORY);
+    private static final KeyMapping plus = new KeyMapping("key.betterhurtcam.plus", InputConstants.Type.KEYBOARD, InputConstants.KEY_F7, CATEGORY);
+    private static final KeyMapping minus = new KeyMapping("key.betterhurtcam.minus", InputConstants.Type.KEYBOARD, InputConstants.KEY_F6, CATEGORY);
 
     @Getter
     private static final ConfigManager<BHCConfig> manager = ConfigManager.createDefault(BHCConfig.class, "betterhurtcam");
