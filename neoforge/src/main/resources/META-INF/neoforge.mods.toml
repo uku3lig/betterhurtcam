@@ -7,28 +7,29 @@ modId = "betterhurtcam"
 displayName = "BetterHurtCam"
 version = "${version}"
 
-logoFile = "assets/betterhurtcam/icon.png"
+iconFile = "assets/betterhurtcam/icon.png"
 authors = "uku"
 description = "nohurtcam but better"
+displayURL = "https://modrinth.com/project/o4y0N2hu"
 
 [[dependencies.betterhurtcam]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.2,)"
+versionRange = "[26.3,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.betterhurtcam]]
 modId = "neoforge"
 type = "required"
-versionRange = "[26.2.0.0-beta,)"
+versionRange = "[26.3.0.0-beta,)"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.betterhurtcam]]
 modId = "ukulib"
 type = "required"
-versionRange = "[2.1.0,3)"
+versionRange = "[2.2.0,3)"
 ordering = "NONE"
 side = "CLIENT"
 
